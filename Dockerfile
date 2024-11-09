@@ -1,6 +1,12 @@
 FROM node
 
-RUN apt-get update
+RUN apt-get update && apt-get install -y \
+    libfuse2 \
+    curl \
+    ca-certificates \
+    git \
+    libdbus-1-3 \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -15,8 +21,6 @@ RUN npm install
 RUN npm run build
 
 WORKDIR /app/api/dist
-
-RUN apt-get update && apt-get install -y libdbus-1-3 && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 5920
 
