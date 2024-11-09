@@ -22,6 +22,6 @@ RUN npm run build
 
 WORKDIR /app/api/dist
 
-EXPOSE 5920
+EXPOSE 5920 5921
 
 CMD ["node", "index.cjs"]
